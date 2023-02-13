@@ -10,7 +10,7 @@
             let randomNumber = Math.floor(Math.random() * 3); // random number 0-2
             
             if (randomNumber === 0) {
-                return 'Rock';  
+                return 'Rock';
             }
             else if (randomNumber === 1) {
                 return 'Paper';
@@ -19,8 +19,43 @@
                 return 'Scissors';
             }
         }
+
+        function playRound (playerSelection, computerSelection) { // play a single round of the game
+            if (computerSelection === 'Rock' && playerSelection === 'Scissors') { // Rock computer selection
+                return "You lose! " + computerSelection + " beats " + playerSelection;
+            }
+            else if (computerSelection === 'Rock' && playerSelection === 'Papers') {
+                return "You Win! " + playerSelection + " beats " + computerSelection;
+            }
+            else if (computerSelection === 'Rock' && playerSelection === 'Rock') {
+                return "are you trying to win or what?";
+            }
+            else if (computerSelection === 'Paper' && playerSelection === 'Rock') { // Paper computer selection
+                return "You lose! " + computerSelection + " beats " + playerSelection;
+            }
+            else if (computerSelection === 'Paper' && playerSelection === 'Scissors') {
+                return "You Win! " + playerSelection + " beats " + computerSelection;
+            }
+            else if (computerSelection === 'Paper' && playerSelection === 'Paper') {
+                return "are you trying to win or what?";
+            }
+            if (computerSelection === 'Scissors' && playerSelection === 'Paper') { // Scissors computer selection
+                return "You lose! " + computerSelection + " beats " + playerSelection;
+            }
+            else if (computerSelection === 'Scissors' && playerSelection === 'Rock') {
+                return "You Win! " + playerSelection + " beats " + computerSelection;
+            }
+            else if (computerSelection === 'Scissors' && playerSelection === 'Scissors') {
+                return "are you trying to win or what?";
+            }
+            else {
+                return "fck";
+            }
+        }
         
-        getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
+        const playerSelection = "Scissors";
+        const computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
+        console.log(playRound(playerSelection, computerSelection)); // plays a single round of rock, paper and scissors
     </script>
 </head>
 
