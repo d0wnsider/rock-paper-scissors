@@ -21,31 +21,31 @@
         }
 
         function playRound (playerSelection, computerSelection) { // play a single round of the game
-            if (computerSelection === 'Rock' && playerSelection === 'Scissors') { // Rock computer selection
+            if (computerSelection === 'Rock' && playerSelection.toLowerCase() === 'scissors') { // Rock computer selection
                 return "You lose! " + computerSelection + " beats " + playerSelection;
             }
-            else if (computerSelection === 'Rock' && playerSelection === 'Papers') {
+            else if (computerSelection === 'Rock' && playerSelection.toLowerCase() === 'papers') {
                 return "You Win! " + playerSelection + " beats " + computerSelection;
             }
-            else if (computerSelection === 'Rock' && playerSelection === 'Rock') {
+            else if (computerSelection === 'Rock' && playerSelection.toLowerCase() === 'rock') {
                 return "are you trying to win or what?";
             }
-            else if (computerSelection === 'Paper' && playerSelection === 'Rock') { // Paper computer selection
+            else if (computerSelection === 'Paper' && playerSelection.toLowerCase() === 'rock') { // Paper computer selection
                 return "You lose! " + computerSelection + " beats " + playerSelection;
             }
-            else if (computerSelection === 'Paper' && playerSelection === 'Scissors') {
+            else if (computerSelection === 'Paper' && playerSelection.toLowerCase() === 'scissors') {
                 return "You Win! " + playerSelection + " beats " + computerSelection;
             }
-            else if (computerSelection === 'Paper' && playerSelection === 'Paper') {
+            else if (computerSelection === 'Paper' && playerSelection.toLowerCase() === 'paper') {
                 return "are you trying to win or what?";
             }
-            if (computerSelection === 'Scissors' && playerSelection === 'Paper') { // Scissors computer selection
+            if (computerSelection === 'Scissors' && playerSelection.toLowerCase() === 'paper') { // Scissors computer selection
                 return "You lose! " + computerSelection + " beats " + playerSelection;
             }
-            else if (computerSelection === 'Scissors' && playerSelection === 'Rock') {
+            else if (computerSelection === 'Scissors' && playerSelection.toLowerCase() === 'rock') {
                 return "You Win! " + playerSelection + " beats " + computerSelection;
             }
-            else if (computerSelection === 'Scissors' && playerSelection === 'Scissors') {
+            else if (computerSelection === 'Scissors' && playerSelection.toLowerCase() === 'scissors') {
                 return "are you trying to win or what?";
             }
             else {
@@ -53,7 +53,7 @@
             }
         }
         
-        const playerSelection = "Scissors";
+        const playerSelection = "rOcK";
         const computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
         console.log(playRound(playerSelection, computerSelection)); // plays a single round of rock, paper and scissors
     </script>
