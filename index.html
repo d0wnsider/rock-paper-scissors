@@ -20,35 +20,35 @@
             }
         }
 
-        function playRound(playerSelection, computerSelection, tie) { // play a single round of the game
+        function playRound(playerSelection, computerSelection) { // play a single round of the game
             if (computerSelection === 'Rock' && playerSelection.toLowerCase() === 'scissors') { // Rock computer selection
-                console.log(computerSelection + " beats " + playerSelection);
+                console.log(computerSelection + " beats " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase());
                 return computerSelection;
             }
             else if (computerSelection === 'Rock' && playerSelection.toLowerCase() === 'paper') {
-                console.log(playerSelection + " beats " + computerSelection);
+                console.log(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase() + " beats " + computerSelection);
                 return playerSelection;
             }
             else if (computerSelection === 'Rock' && playerSelection.toLowerCase() === 'rock') {
                 return console.log("Tie");
             }
             else if (computerSelection === 'Paper' && playerSelection.toLowerCase() === 'rock') { // Paper computer selection
-                console.log(computerSelection + " beats " + playerSelection);
+                console.log(computerSelection + " beats " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase());
                 return computerSelection;
             }
             else if (computerSelection === 'Paper' && playerSelection.toLowerCase() === 'scissors') {
-                console.log(playerSelection + " beats " + computerSelection);
+                console.log(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase() + " beats " + computerSelection);
                 return playerSelection;
             }
             else if (computerSelection === 'Paper' && playerSelection.toLowerCase() === 'paper') {
                 return console.log("Tie");
             }
             if (computerSelection === 'Scissors' && playerSelection.toLowerCase() === 'paper') { // Scissors computer selection
-                console.log(computerSelection + " beats " + playerSelection);
+                console.log(computerSelection + " beats " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase());
                 return computerSelection;
             }
             else if (computerSelection === 'Scissors' && playerSelection.toLowerCase() === 'rock') {
-                console.log(playerSelection + " beats " + computerSelection);
+                console.log(playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase() + " beats " + computerSelection);
                 return playerSelection;
             }
             else if (computerSelection === 'Scissors' && playerSelection.toLowerCase() === 'scissors') {
@@ -82,10 +82,10 @@
         let results;
         game();
         if (playerScore > computerScore) {
-            console.log("Player wins! " + playerScore);
+            console.log("Player wins!");
         }
         else {
-            console.log("Computer wins" + computerScore);
+            console.log("Computer wins!");
         }
     </script>
 </head>
