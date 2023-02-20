@@ -69,7 +69,7 @@ container.appendChild(computerScoreContainer);
 function game() {
     // player adding event listener
     rock.addEventListener('click', () => {
-        results = playRound("rock", computerSelection);
+        results = playRound("rock", computerSelection); // win on rock player selection
         //check if computer is what
         if (computerSelection === 'Paper') { // if 
             computerScore += 1;
@@ -85,10 +85,17 @@ function game() {
         computerScoreContainer.textContent = computerScore;
         // reset computer selection for next round
         computerSelection = getComputerChoice();
+        // checks if player or computer won 
+        if (playerScore == 5) {
+            console.log("Player won!");
+        }
+        if (computerScore == 5) {
+            console.log("Computer won!")
+        }
     });
     paper.addEventListener('click', () => {
         playerSelection = "paper";
-        results = playRound(playerSelection, computerSelection);
+        results = playRound(playerSelection, computerSelection); // win on rock player selection
         //check if player or computer won on 1 round
         if (computerSelection === 'Rock') {    
             playerScore += 1;
@@ -104,10 +111,17 @@ function game() {
         computerScoreContainer.textContent = computerScore;
         // reset computer selection for next round
         computerSelection = getComputerChoice();
+        // checks if player or computer won 
+        if (playerScore == 5) {
+            console.log("Player won!");
+        }
+        if (computerScore == 5) {
+            console.log("Computer won!")
+        }
     });
     scissors.addEventListener('click', () => {
         playerSelection = "scissors";
-        results = playRound(playerSelection, computerSelection);
+        results = playRound(playerSelection, computerSelection); // win on rock player selection
         //check if player or computer won on 1 round
         if (computerSelection === 'Rock') {    
             computerScore += 1;
@@ -123,31 +137,14 @@ function game() {
         computerScoreContainer.textContent = computerScore;
         // reset computer selection for next round
         computerSelection = getComputerChoice();
+        // checks if player or computer won 
+        if (playerScore == 5) {
+            console.log("Player won!");
+        }
+        if (computerScore == 5) {
+            console.log("Computer won!")
+        }
     });
 }
 // playing game
 game();
-
-//results = playRound(playerSelection, computerSelection); // plays a single round of rock, paper and scissors
-
-// check if rock has won?
-// if (results === computerSelection) { // score results
-//     computerScore += 1;
-// }
-// else if (results === playerSelection) {
-//     playerScore += 1;
-// }
-// else {
-//     computerScore += 1;
-//     playerScore += 1
-// }
-// 
-// console.log("Player score: " + playerScore);
-// console.log("Computer score: " + computerScore);   
-
-// if (playerScore > computerScore) {
-//     console.log("Player wins!");
-// }
-// else {
-//     console.log("Computer wins!");
-// }
