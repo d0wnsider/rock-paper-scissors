@@ -48,43 +48,93 @@ function playRound(playerSelection, computerSelection) { // play a single round 
     }
 }
 
-//function game() { // plays 5 rounds of game
-//let playerSelection = prompt("Enter: "); // prompt user
 // start of program
 let playerScore = 0;
 let computerScore = 0;
 let results;
-
-// update first part of the run
-const buttons = document.querySelectorAll('button');
-console.log(buttons);
-
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        console.log(button)
-    })
-});
-// rockButton.addEventListener('click', () => {
-//     playRound(playerSelection, computerSelection);
-// });
+let playerSelection;
+const computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
 
 // game round
-let playerSelection = 'rock';
-const computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const container = document.querySelector("#container");
+
+const playerScoreContainer = document.createElement('div');
+const computerScoreContainer = document.createElement('div');
+container.appendChild(playerScoreContainer);
+container.appendChild(computerScoreContainer);
+
+// player adding event listener
+rock.addEventListener('click', () => {
+    playerSelection = "rock";
+    results = playRound(playerSelection, computerSelection);
+    //check if player or computer won on 1 round
+    if (results === playerSelection) {    
+        playerScore += 1;
+    }
+    else if (results === computerSelection) {
+        computerScore += 1;
+    }
+    else {
+        playerScore += 1;
+        computerScore += 1;
+    }
+    playerScoreContainer.textContent = playerScore;
+    computerScoreContainer.textContent = computerScore;
+});
+paper.addEventListener('click', () => {
+    playerSelection = "paper";
+    results = playRound(playerSelection, computerSelection);
+    //check if player or computer won on 1 round
+    if (results === playerSelection) {    
+        playerScore += 1;
+    }
+    else if (results === computerSelection) {
+        computerScore += 1;
+    }
+    else {
+        playerScore += 1;
+        computerScore += 1;
+    }
+    playerScoreContainer.textContent = playerScore;
+    computerScoreContainer.textContent = computerScore;
+});
+scissors.addEventListener('click', () => {
+    playerSelection = "scissors";
+    results = playRound(playerSelection, computerSelection);
+    //check if player or computer won on 1 round
+    if (results === playerSelection) {    
+        playerScore += 1;
+    }
+    else if (results === computerSelection) {
+        computerScore += 1;
+    }
+    else {
+        playerScore += 1;
+        computerScore += 1;
+    }
+    playerScoreContainer.textContent = playerScore;
+    computerScoreContainer.textContent = computerScore;
+});
+
 //results = playRound(playerSelection, computerSelection); // plays a single round of rock, paper and scissors
 
-if (results === computerSelection) { // score results
-    computerScore += 1;
-}
-else if (results === playerSelection) {
-    playerScore += 1;
-}
-else {
-    computerScore += 1;
-    playerScore += 1
-}
-//console.log("Player score: " + playerScore);
-//console.log("Computer score: " + computerScore);   
+// check if rock has won?
+// if (results === computerSelection) { // score results
+//     computerScore += 1;
+// }
+// else if (results === playerSelection) {
+//     playerScore += 1;
+// }
+// else {
+//     computerScore += 1;
+//     playerScore += 1
+// }
+// 
+// console.log("Player score: " + playerScore);
+// console.log("Computer score: " + computerScore);   
 
 // if (playerScore > computerScore) {
 //     console.log("Player wins!");
