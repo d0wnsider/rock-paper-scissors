@@ -53,9 +53,9 @@ let playerScore = 0;
 let computerScore = 0;
 let results;
 let playerSelection;
-const computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
+let computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
 
-// game round
+// creating variables linking to DOM
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
@@ -66,58 +66,67 @@ const computerScoreContainer = document.createElement('div');
 container.appendChild(playerScoreContainer);
 container.appendChild(computerScoreContainer);
 
-// player adding event listener
-rock.addEventListener('click', () => {
-    playerSelection = "rock";
-    results = playRound(playerSelection, computerSelection);
-    //check if player or computer won on 1 round
-    if (results === playerSelection) {    
-        playerScore += 1;
-    }
-    else if (results === computerSelection) {
-        computerScore += 1;
-    }
-    else {
-        playerScore += 1;
-        computerScore += 1;
-    }
-    playerScoreContainer.textContent = playerScore;
-    computerScoreContainer.textContent = computerScore;
-});
-paper.addEventListener('click', () => {
-    playerSelection = "paper";
-    results = playRound(playerSelection, computerSelection);
-    //check if player or computer won on 1 round
-    if (results === playerSelection) {    
-        playerScore += 1;
-    }
-    else if (results === computerSelection) {
-        computerScore += 1;
-    }
-    else {
-        playerScore += 1;
-        computerScore += 1;
-    }
-    playerScoreContainer.textContent = playerScore;
-    computerScoreContainer.textContent = computerScore;
-});
-scissors.addEventListener('click', () => {
-    playerSelection = "scissors";
-    results = playRound(playerSelection, computerSelection);
-    //check if player or computer won on 1 round
-    if (results === playerSelection) {    
-        playerScore += 1;
-    }
-    else if (results === computerSelection) {
-        computerScore += 1;
-    }
-    else {
-        playerScore += 1;
-        computerScore += 1;
-    }
-    playerScoreContainer.textContent = playerScore;
-    computerScoreContainer.textContent = computerScore;
-});
+function game() {
+    // player adding event listener
+    rock.addEventListener('click', () => {
+        results = playRound("rock", computerSelection);
+        //check if computer is what
+        if (computerSelection === 'Paper') { // if 
+            computerScore += 1;
+        }
+        else if (computerSelection === 'Scissors') {
+            playerScore += 1;
+        }
+        else {
+            playerScore += 1;
+            computerScore += 1;
+        }
+        playerScoreContainer.textContent = playerScore;
+        computerScoreContainer.textContent = computerScore;
+        // reset computer selection for next round
+        computerSelection = getComputerChoice();
+    });
+    paper.addEventListener('click', () => {
+        playerSelection = "paper";
+        results = playRound(playerSelection, computerSelection);
+        //check if player or computer won on 1 round
+        if (computerSelection === 'Rock') {    
+            playerScore += 1;
+        }
+        else if (computerSelection === 'Scissors') {
+            computerScore += 1;
+        }
+        else {
+            playerScore += 1;
+            computerScore += 1;
+        }
+        playerScoreContainer.textContent = playerScore;
+        computerScoreContainer.textContent = computerScore;
+        // reset computer selection for next round
+        computerSelection = getComputerChoice();
+    });
+    scissors.addEventListener('click', () => {
+        playerSelection = "scissors";
+        results = playRound(playerSelection, computerSelection);
+        //check if player or computer won on 1 round
+        if (computerSelection === 'Rock') {    
+            computerScore += 1;
+        }
+        else if (computerSelection === 'Paper') {
+            playerScore += 1;
+        }
+        else {
+            playerScore += 1;
+            computerScore += 1;
+        }
+        playerScoreContainer.textContent = playerScore;
+        computerScoreContainer.textContent = computerScore;
+        // reset computer selection for next round
+        computerSelection = getComputerChoice();
+    });
+}
+// playing game
+game();
 
 //results = playRound(playerSelection, computerSelection); // plays a single round of rock, paper and scissors
 
