@@ -56,23 +56,17 @@ let computerScore = 0;
 let results;
 
 // update first part of the run
-const container = document.querySelector('#container'); 
-const rockButton = document.createElement('button'); // rockpaperscissors buttons
-const paperButton = document.createElement('button');
-const scissorsButton = document.createElement('button');
+const buttons = document.querySelectorAll('button');
+console.log(buttons);
 
-rockButton.textContent = 'Rock'; // text
-paperButton.textContent = 'Paper';
-scissorsButton.textContent = 'Scissors';
-
-container.appendChild(rockButton); // adding children to parent
-container.appendChild(paperButton);
-container.appendChild(scissorsButton);
-
-rockButton.addEventListener('click', () => {
-    playRound(playerSelection, computerSelection);
-    console.log(playRound);
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button)
+    })
 });
+// rockButton.addEventListener('click', () => {
+//     playRound(playerSelection, computerSelection);
+// });
 
 // game round
 let playerSelection = 'rock';
@@ -89,12 +83,12 @@ else {
     computerScore += 1;
     playerScore += 1
 }
-console.log("Player score: " + playerScore);
-console.log("Computer score: " + computerScore);   
+//console.log("Player score: " + playerScore);
+//console.log("Computer score: " + computerScore);   
 
-if (playerScore > computerScore) {
-    console.log("Player wins!");
-}
-else {
-    console.log("Computer wins!");
-}
+// if (playerScore > computerScore) {
+//     console.log("Player wins!");
+// }
+// else {
+//     console.log("Computer wins!");
+// }
