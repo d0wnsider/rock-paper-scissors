@@ -48,29 +48,49 @@ function playRound(playerSelection, computerSelection) { // play a single round 
     }
 }
 
-function game() { // plays 5 rounds of game
-    let playerSelection = prompt("Enter: "); // prompt user
-    const computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
-    results = playRound(playerSelection, computerSelection); // plays a single round of rock, paper and scissors
-
-    if (results === computerSelection) { // score results
-        computerScore += 1;
-    }
-    else if (results === playerSelection) {
-        playerScore += 1;
-    }
-    else {
-        computerScore += 1;
-        playerScore += 1
-    }
-    console.log("Player score: " + playerScore);
-    console.log("Computer score: " + computerScore);   
-}
+//function game() { // plays 5 rounds of game
+//let playerSelection = prompt("Enter: "); // prompt user
 // start of program
 let playerScore = 0;
 let computerScore = 0;
 let results;
-game();
+
+// update first part of the run
+const container = document.querySelector('#container'); 
+const rockButton = document.createElement('button'); // rockpaperscissors buttons
+const paperButton = document.createElement('button');
+const scissorsButton = document.createElement('button');
+
+rockButton.textContent = 'Rock'; // text
+paperButton.textContent = 'Paper';
+scissorsButton.textContent = 'Scissors';
+
+container.appendChild(rockButton); // adding children to parent
+container.appendChild(paperButton);
+container.appendChild(scissorsButton);
+
+rockButton.addEventListener('click', () => {
+    playRound(playerSelection, computerSelection);
+    console.log(playRound);
+});
+
+// game round
+let playerSelection = 'rock';
+const computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
+//results = playRound(playerSelection, computerSelection); // plays a single round of rock, paper and scissors
+
+if (results === computerSelection) { // score results
+    computerScore += 1;
+}
+else if (results === playerSelection) {
+    playerScore += 1;
+}
+else {
+    computerScore += 1;
+    playerScore += 1
+}
+console.log("Player score: " + playerScore);
+console.log("Computer score: " + computerScore);   
 
 if (playerScore > computerScore) {
     console.log("Player wins!");
