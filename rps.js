@@ -40,6 +40,21 @@ function playRound(playerSelection, computerSelection) { // play a single round 
         return 'Tie';   
     }
 }
+// reset scores
+function reset() {
+    again.addEventListener('click', () => {
+        playerScore = 0;
+        computerScore = 0;
+        rock.disabled = false;
+        paper.disabled = false;
+        scissors.disabled = false;
+        again.disabled = true;
+        playerScoreContainer.textContent = "Player score: ";
+        computerScoreContainer.textContent = "Computer score: ";
+        results.textContent = '';
+        finalResult.textContent = '';
+    });
+}
 
 // start of program
 let playerScore = 0;
@@ -54,6 +69,9 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const container = document.querySelector('#container');
 const finalResult = document.querySelector('#finalResult');
+const again = document.querySelector('#again');
+again.disabled = true;
+//again.style.visibility = 'hidden';
 let results = document.querySelector('#results');
 const playerScoreContainer = document.createElement('div');
 const computerScoreContainer = document.createElement('div');
@@ -84,12 +102,14 @@ function game() {
             rock.disabled = true;
             paper.disabled = true;
             scissors.disabled = true;
+            again.disabled = false;
         }
         if (computerScore == 5) {
             finalResult.textContent = "Computer wins!";
             rock.disabled = true;
             paper.disabled = true;
             scissors.disabled = true;
+            again.disabled = false;
         }
     });
     paper.addEventListener('click', () => {
@@ -115,12 +135,14 @@ function game() {
             rock.disabled = true;
             paper.disabled = true;
             scissors.disabled = true;
+            again.disabled = false;
         }
         if (computerScore == 5) {
             finalResult.textContent = "Computer won!";
             rock.disabled = true;
             paper.disabled = true;
             scissors.disabled = true;
+            again.disabled = false;
         }
     });
     scissors.addEventListener('click', () => {
@@ -146,14 +168,17 @@ function game() {
             rock.disabled = true;
             paper.disabled = true;
             scissors.disabled = true;
+            again.disabled = false;
         }
         if (computerScore == 5) {
             finalResult.textContent = "Computer wins!";
             rock.disabled = true;
             paper.disabled = true;
             scissors.disabled = true;
+            again.disabled = false;
         }
     });
+    reset();
 }
 // playing game
 game();
