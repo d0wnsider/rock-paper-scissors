@@ -1,5 +1,6 @@
-function getComputerChoice() { // random choice rock, paper and scissors
-    let randomNumber = Math.floor(Math.random() * 3); // random number 0-2
+// random 0-2 choice rock, paper and scissors
+function getComputerChoice() { 
+    let randomNumber = Math.floor(Math.random() * 3);
     if (randomNumber === 0) {
         return 'Rock';
     }
@@ -10,8 +11,8 @@ function getComputerChoice() { // random choice rock, paper and scissors
         return 'Scissors';
     }
 }
-
-function playRound(playerSelection, computerSelection) { // play a single round of the game
+// play a single round of the game
+function playRound(playerSelection, computerSelection) { 
     if (computerSelection === 'Rock' && playerSelection.toLowerCase() === 'scissors') { // Rock computer selection
         return computerSelection + " beats " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
     }
@@ -42,25 +43,32 @@ function playRound(playerSelection, computerSelection) { // play a single round 
 }
 // reset scores
 function reset() {
-    again.addEventListener('click', () => {
+    retry.addEventListener('click', () => {
         playerScore = 0;
         computerScore = 0;
         rock.disabled = false;
         paper.disabled = false;
         scissors.disabled = false;
-        again.disabled = true;
-        playerScoreContainer.textContent = "Player score: ";
-        computerScoreContainer.textContent = "Computer score: ";
-        results.textContent = '';
-        finalResult.textContent = '';
+        retry.disabled = true;
+        playerScoreContainer.textContent = "Player score: 0";
+        computerScoreContainer.textContent = "Computer score: 0";
+        results.textContent = 'Round results here';
+        finalResult.textContent = '???';
     });
+}
+// grouping up disabled clutter 
+function retryDisabled() {
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    retry.disabled = false;
 }
 
 // start of program
 let playerScore = 0;
 let computerScore = 0;
-let playResults;
-let playerSelection;
+let playResults = null;
+let playerSelection = null;
 let computerSelection = getComputerChoice(); // returning either 'Rock', 'Paper', 'Scissors'
 
 // creating variables linking to DOM
@@ -69,14 +77,11 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const container = document.querySelector('#container');
 const finalResult = document.querySelector('#finalResult');
-const again = document.querySelector('#again');
-again.disabled = true;
-//again.style.visibility = 'hidden';
+const playerScoreContainer = document.getElementById('playerScoreContainer');
+const computerScoreContainer = document.getElementById('computerScoreContainer');
+const retry = document.querySelector('#retry');
+retry.disabled = true;
 let results = document.querySelector('#results');
-const playerScoreContainer = document.createElement('div');
-const computerScoreContainer = document.createElement('div');
-container.appendChild(playerScoreContainer);
-container.appendChild(computerScoreContainer);
 
 function game() {
     // player adding event listener
@@ -90,8 +95,8 @@ function game() {
             playerScore += 1;
         }
 
-        playerScoreContainer.textContent = "Player score: " + playerScore;
-        computerScoreContainer.textContent = "Computer score: " + computerScore;
+        playerScoreContainer.textContent = `Player score: ${playerScore}`;
+        computerScoreContainer.textContent = `Computer score: ${computerScore}`;
         // reset computer selection for next round
         computerSelection = getComputerChoice();
         // print results every round
@@ -99,19 +104,14 @@ function game() {
         // checks if player or computer won 
         if (playerScore == 5) {
             finalResult.textContent = "Player wins!";
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
-            again.disabled = false;
+            retryDisabled();
         }
         if (computerScore == 5) {
             finalResult.textContent = "Computer wins!";
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
-            again.disabled = false;
+            retryDisabled();
         }
     });
+    
     paper.addEventListener('click', () => {
         playerSelection = 'paper';
         playResults = playRound(playerSelection, computerSelection); // win on rock player selection
@@ -123,8 +123,8 @@ function game() {
             computerScore += 1;
         }
 
-        playerScoreContainer.textContent = "Player score: " + playerScore;
-        computerScoreContainer.textContent = "Computer score: " + computerScore;
+        playerScoreContainer.textContent = `Player score: ${playerScore}`;
+        computerScoreContainer.textContent = `Computer score: ${computerScore}`;
         // reset computer selection for next round
         computerSelection = getComputerChoice();
         // print results every round
@@ -132,19 +132,14 @@ function game() {
         // checks if player or computer won 
         if (playerScore == 5) {
             finalResult.textContent = "Player wins!";
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
-            again.disabled = false;
+            retryDisabled();
         }
         if (computerScore == 5) {
             finalResult.textContent = "Computer won!";
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
-            again.disabled = false;
+            retryDisabled();
         }
     });
+
     scissors.addEventListener('click', () => {
         playerSelection = 'scissors';
         playResults = playRound(playerSelection, computerSelection); // win on rock player selection
@@ -155,9 +150,9 @@ function game() {
         if (computerSelection === 'Paper') {
             playerScore += 1;
         }
-        
-        playerScoreContainer.textContent = "Player score: " + playerScore;
-        computerScoreContainer.textContent = "Computer score: " + computerScore;
+
+        playerScoreContainer.textContent = `Player score: ${playerScore}`;
+        computerScoreContainer.textContent = `Computer score: ${computerScore}`;
         // reset computer selection for next round
         computerSelection = getComputerChoice();
         // print results every round
@@ -165,17 +160,11 @@ function game() {
         // checks if player or computer won 
         if (playerScore == 5) {
             finalResult.textContent = "Player wins!";
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
-            again.disabled = false;
+            retryDisabled();
         }
         if (computerScore == 5) {
             finalResult.textContent = "Computer wins!";
-            rock.disabled = true;
-            paper.disabled = true;
-            scissors.disabled = true;
-            again.disabled = false;
+            retryDisabled();
         }
     });
     reset();

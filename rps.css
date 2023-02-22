@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border-style: solid; */
+    /* border-color: red; */
+    background-color: beige;
+    font-family: Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    padding: 30px;
+}
+/* group of buttons */
+#container {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    gap: 30px;
+}
+/* contains player and computer scores */
+#scoreContainer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+#playerScoreContainer , #computerScoreContainer { padding: 20px; }
+/* results per round */
+#results {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#finalResult {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+}
+
+#retry { 
+    background-color: aqua; 
+    padding: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: 100%;
+}
