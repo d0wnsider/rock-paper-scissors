@@ -24,6 +24,7 @@ h1 {
     display: flex;
     justify-content: center;
     gap: 50px;
+    font-size: 20px;
 }
 
 #playerScoreContainer , #computerScoreContainer { padding: 20px; }
@@ -32,12 +33,15 @@ h1 {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    font-size: 50px;
 }
 
 #finalResult {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    font-weight: bold;
+    color: brown;
 }
 
 .btn {
@@ -46,11 +50,17 @@ h1 {
 }
 
 #retry { 
-    background-color: aqua; 
+    background-color: orangered; 
     padding: 20px;
 }
 
 img {
     max-width: 100%;
     height: 100%;
+}
+
+#rock:hover, #paper:hover, #scissors:hover {
+    border-color: orange;
+    border-radius: 5px;
+    border-width: 10px;
 }
